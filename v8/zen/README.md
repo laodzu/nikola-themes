@@ -1,5 +1,5 @@
 The zen and zen-based themes are very customizable, so to make these themes
-work, you have to use the sample config file. The theme uses Font Awesome v5
+work, you have to use the sample config file. The theme uses Font Awesome v6
 icons.
 
 Three variants of Zen are available:
