@@ -45,7 +45,16 @@
     <header>
         {{ html_title() }}
         <div class="metadata">
-            <p class="dateline"><a href="{{ post.permalink() }}" rel="bookmark"><i class="fa fa-clock"></i> <time class="published dt-published" datetime="{{ post.formatted_date('webiso') }}" itemprop="datePublished" title="{{ post.formatted_date(date_format)|e }}">{{ post.formatted_date(date_format)|e }}</time></a></p>
+            <p class="dateline">
+            <a href="{{ post.permalink() }}" rel="bookmark">
+            <i class="fa fa-clock"></i>
+	    <time class="published dt-published" datetime="{{ post.formatted_date('webiso') }}" itemprop="datePublished" title="{{ post.formatted_date(date_format)|e }}">{{ post.formatted_date(date_format)|e }}</time>
+            {% if post.updated and post.updated != post.date %}
+                <span class="updated"> ({{ messages("updated") }}
+                    <time class="updated dt-updated" datetime="{{ post.formatted_updated('webiso') }}" itemprop="dateUpdated" title="{{ post.formatted_updated(date_format)|e }}">{{ post.formatted_updated(date_format)|e }}</time>)</span>
+            {% endif %}
+            </a>
+            </p>
             <p class="byline author vcard"> <i class="fa fa-user"></i> <span class="byline-name fn" itemprop="author">
                 {% if author_pages_generated %}
                     <a href="{{ _link('author', post.author()) }}">{{ post.author()|e }}</a>
